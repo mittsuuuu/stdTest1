@@ -1,0 +1,7 @@
+﻿  Main.cpp
+C:\DxLib_VC\プロジェクトに追加すべきファイル_VC用\DxLib.h(3964,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+F:\programing\C++\stdTest1\Main.cpp(66,21): warning C4244: '-=': 'double' から 'int' への変換です。データが失われる可能性があります。
+F:\programing\C++\stdTest1\Main.cpp(72,21): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+F:\programing\C++\stdTest1\Main.cpp(78,21): warning C4244: '-=': 'double' から 'int' への変換です。データが失われる可能性があります。
+F:\programing\C++\stdTest1\Main.cpp(84,21): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+  stdTest1.vcxproj -> F:\programing\C++\stdTest1\x64\Debug\stdTest1.exe
