@@ -4,4 +4,5 @@ F:\programing\C++\stdTest1\Main.cpp(66,21): warning C4244: '-=': 'double' から
 F:\programing\C++\stdTest1\Main.cpp(72,21): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
 F:\programing\C++\stdTest1\Main.cpp(78,21): warning C4244: '-=': 'double' から 'int' への変換です。データが失われる可能性があります。
 F:\programing\C++\stdTest1\Main.cpp(84,21): warning C4244: '+=': 'double' から 'int' への変換です。データが失われる可能性があります。
+F:\programing\C++\stdTest1\Main.cpp(218,67): warning C4834: 'nodiscard' 属性を持つ関数の戻り値を破棄しています
   stdTest1.vcxproj -> F:\programing\C++\stdTest1\x64\Debug\stdTest1.exe

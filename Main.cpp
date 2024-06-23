@@ -121,7 +121,7 @@ void keyIn()
     }
 }
 
-void thread_func(Player* player, int start, int end)
+void thread_func(Player* player, int start, int end, std::vector<Bullet*>& bp)
 {
     //Bullet* bp;
     while (player -> isLife())
@@ -160,6 +160,19 @@ void thread_func(Player* player, int start, int end)
     }
 }
 
+void move_Bullets(std::vector<Bullet*>& bp, Player *player)
+{
+    if (bullet_draw_atom)
+    {
+        for (Bullet* b : bullets)
+        {
+            b->moveBullet();
+            if (player -> isCollision(b))
+                player -> playerDie();
+        }
+    }
+}
+
 void debug_drawString()
 {
     Bullet** addr = &bullets[0];
@@ -176,7 +189,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     WaitKey();
 
-    //std::thread th_a(thread_func, &player, 0, bullet_num);
+    // std::thread th_a(thread_func, &player, 0, bullet_num, bullets);
 
     while (ScreenFlip() == 0 && ProcessMessage() == 0
         && ClearDrawScreen() == 0 && GetHitKeyStateAll(key) == 0)
@@ -186,12 +199,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         auto now = std::chrono::system_clock::now();
         std::chrono::duration<double, std::milli> elapsed = now - start;
 
-        //if (elapsed.count() > 5)
-        //{
-        //    if(count < bullet_num)
-        //        count++;
-        //    start = std::chrono::system_clock::now();
-        //}
+        if (elapsed.count() > 5)
+        {
+            if(count < bullet_num)
+                count++;
+            start = std::chrono::system_clock::now();
+        }
 
         keyIn();
         if (key[KEY_INPUT_SPACE] == 1)
@@ -201,27 +214,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             //bullet_draw = true;
             bullet_draw_atom = true;
             
-            //std::vector<Bullet*>::iterator it;
-            //for (it = bullets.begin(); it != bullets.end(); ++it) *it;
-            //for (Bullet* b : bullets) b->drawBullet();
+            std::vector<Bullet*>::iterator it;
+            for (it = bullets.begin(); it != bullets.end(); ++it) *it;
+            for (Bullet* b : bullets) b->drawBullet();
         }
 
-        //if (bullet_draw)
-        //{
-        //    for (Bullet* b : bullets)
-        //    {
-        //        b->moveBullet();
-        //        if (player.isCollision(b))
-        //            player.playerDie();
-        //    }
-        //}
+        move_Bullets(bullets, &player);
 
         player.move(x, y);
 
         if (key[KEY_INPUT_ESCAPE] == 1) break;
     };
 
-    //th_a.join();
+    // th_a.join();
     DxLib_End();
 
     std::vector<Bullet*>::iterator it;
