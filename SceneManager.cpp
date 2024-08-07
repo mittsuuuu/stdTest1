@@ -1,5 +1,5 @@
 #include "SceneManager.hpp"
-#include "Title.h"
+#include "Title.hpp"
 
 SceneManager::SceneManager() :
 	mScene(Title())
